@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HERO_ITEMS = [
@@ -115,22 +118,22 @@ export default function Hero() {
         </AnimatePresence>
 
         {/* Controls */}
-        <div className="absolute bottom-10 left-8 md:left-24 flex items-center space-x-6 z-30">
-          <div className="flex space-x-2">
+        <div className="absolute bottom-10 right-8 md:right-16 flex items-center space-x-6 z-30">
+          <div className="hidden sm:flex space-x-2">
             {HERO_ITEMS.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setActiveIndex(idx)}
-                className={`w-8 h-1 rounded-full transition-all ${idx === activeIndex ? 'bg-amber-500 w-16' : 'bg-white/20'}`}
+                className={`w-1.5 h-1.5 rounded-full transition-all ${idx === activeIndex ? 'bg-amber-500 scale-150' : 'bg-white/20'}`}
               />
             ))}
           </div>
-          <div className="flex space-x-3 ml-8">
-            <button onClick={prevSlide} className="p-3 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-all text-white/50 hover:text-white">
-              <ChevronLeft className="w-5 h-5" />
+          <div className="flex space-x-3">
+            <button onClick={prevSlide} className="p-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all text-white/50 hover:text-white group">
+              <ChevronLeft className="w-5 h-5 group-active:scale-90 transition-transform" />
             </button>
-            <button onClick={nextSlide} className="p-3 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-all text-white/50 hover:text-white">
-              <ChevronRight className="w-5 h-5" />
+            <button onClick={nextSlide} className="p-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all text-white/50 hover:text-white group">
+              <ChevronRight className="w-5 h-5 group-active:scale-90 transition-transform" />
             </button>
           </div>
         </div>

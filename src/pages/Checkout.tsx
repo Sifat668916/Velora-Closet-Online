@@ -199,7 +199,7 @@ export default function Checkout() {
                          </label>
                          <input 
                            placeholder="Enter Transaction ID (TrxID)"
-                           required={paymentMethod !== 'cod'}
+                           required
                            className="w-full p-5 bg-white/5 border border-white/10 rounded-2xl outline-none focus:border-amber-500/50 transition-all text-sm text-white placeholder:text-white/10 font-sans mt-4"
                            value={transactionId}
                            onChange={e => setTransactionId(e.target.value)}
