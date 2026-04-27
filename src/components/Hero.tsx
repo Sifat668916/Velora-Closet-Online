@@ -54,12 +54,12 @@ export default function Hero() {
             className="absolute inset-0 flex flex-col md:flex-row items-center"
           >
             {/* Content (Left) */}
-            <div className="flex-1 px-8 md:px-16 lg:px-24 z-20 py-12 md:py-0 text-white">
+            <div className="w-full md:max-w-2xl lg:max-w-3xl px-8 md:px-20 lg:px-28 z-20 py-12 md:py-0 text-white flex flex-col items-center md:items-start text-center md:text-left">
               <motion.span
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="bg-amber-500 text-black text-[10px] font-extrabold uppercase px-2 py-0.5 rounded tracking-widest mb-4 inline-block"
+                className="bg-amber-500 text-black text-[10px] font-extrabold uppercase px-3 py-1 rounded tracking-widest mb-6 inline-block"
               >
                 {HERO_ITEMS[activeIndex].subtitle}
               </motion.span>
@@ -67,9 +67,9 @@ export default function Hero() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white leading-tight mb-6 tracking-tighter"
+                className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-[1.1] mb-8 tracking-tighter whitespace-pre-line max-w-2xl"
               >
-                {HERO_ITEMS[activeIndex].title.split('Collection').join('\nCollection')}
+                {HERO_ITEMS[activeIndex].title}
               </motion.h1>
               <motion.p
                 initial={{ y: 20, opacity: 0 }}
@@ -86,10 +86,10 @@ export default function Hero() {
               >
                 <Link
                   to={HERO_ITEMS[activeIndex].link}
-                  className="group inline-flex items-center space-x-3 bg-white text-black px-8 py-3.5 rounded-full text-sm font-bold hover:bg-amber-500 transition-all transform hover:scale-105"
+                  className="group inline-flex items-center space-x-3 bg-white text-black px-8 py-4 rounded-full text-xs font-black uppercase tracking-widest hover:bg-amber-500 transition-all transform hover:scale-105 whitespace-nowrap shadow-2xl"
                 >
                   <span>View Details</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.div>
             </div>
@@ -115,27 +115,28 @@ export default function Hero() {
         </AnimatePresence>
 
         {/* Controls */}
-        <div className="absolute bottom-6 right-6 md:bottom-12 md:right-12 flex items-center space-x-6 z-30">
-          <div className="hidden sm:flex space-x-3 items-center">
+        <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 flex flex-col items-center space-y-8 z-30">
+          <div className="flex flex-col space-y-3 items-center">
             {HERO_ITEMS.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setActiveIndex(idx)}
-                className={`transition-all duration-300 ${idx === activeIndex ? 'w-8 h-1.5 bg-amber-500 rounded-full' : 'w-1.5 h-1.5 bg-white/20 rounded-full hover:bg-white/40'}`}
+                className={`transition-all duration-300 ${idx === activeIndex ? 'h-8 w-1.5 bg-amber-500 rounded-full' : 'h-1.5 w-1.5 bg-white/20 rounded-full hover:bg-white/40'}`}
+                aria-label={`Go to slide ${idx + 1}`}
               />
             ))}
           </div>
-          <div className="flex space-x-2">
+          <div className="flex flex-col space-y-2">
             <button 
               onClick={prevSlide} 
-              className="p-3 md:p-4 rounded-2xl border border-white/10 bg-black/20 backdrop-blur-md hover:bg-white/10 transition-all text-white/50 hover:text-white group"
+              className="p-3 md:p-4 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md hover:bg-white/10 transition-all text-white/50 hover:text-white group"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-5 h-5 group-active:scale-90 transition-transform" />
             </button>
             <button 
               onClick={nextSlide} 
-              className="p-3 md:p-4 rounded-2xl border border-white/10 bg-black/20 backdrop-blur-md hover:bg-white/10 transition-all text-white/50 hover:text-white group"
+              className="p-3 md:p-4 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md hover:bg-white/10 transition-all text-white/50 hover:text-white group"
               aria-label="Next slide"
             >
               <ChevronRight className="w-5 h-5 group-active:scale-90 transition-transform" />
