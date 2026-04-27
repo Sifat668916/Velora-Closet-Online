@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --color-brand-accent: #f59e0b; /* amber-500 */
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-[#0c0c0e] text-white;
+    min-height: 100vh;
+  }
+}
+
+.frosted-glass {
+  @apply backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full h-10 hover:bg-amber-500/50 transition-colors;
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl transition-all duration-300;
+}
+
+.glass-card:hover {
+  @apply bg-white/10 border-white/20 shadow-[0_0_30px_rgba(245,158,11,0.1)];
+}
